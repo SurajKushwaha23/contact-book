@@ -7,11 +7,7 @@ export default function Navbar() {
   const menuItems = [
     {
       name: "Home",
-      href: "#",
-    },
-    {
-      name: "About",
-      href: "#",
+      href: "/contact-book/index",
     },
     {
       name: "Contact Book",
@@ -28,9 +24,11 @@ export default function Navbar() {
     <>
       <div className="relative w-full bg-gray-100 py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <div className="inline-flex items-center space-x-2">
-            <span className="font-bold">Contact Book</span>
-          </div>
+          <Link href="/contact-book/index">
+            <div className="inline-flex items-center space-x-2">
+              <span className="font-bold">Contact Book</span>
+            </div>
+          </Link>
           <div className="hidden grow items-start lg:flex">
             <ul className="ml-12 inline-flex space-x-8">
               {menuItems.map((item) => (
