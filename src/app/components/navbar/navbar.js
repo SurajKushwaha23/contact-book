@@ -7,11 +7,11 @@ export default function Navbar() {
   const menuItems = [
     {
       name: "Home",
-      href: "/contact-book/index",
+      href: "/index",
     },
     {
       name: "Contact Book",
-      href: "/contact-book/contact-book-list",
+      href: "/contact-book-list",
     },
   ];
 
@@ -24,7 +24,7 @@ export default function Navbar() {
     <>
       <div className="relative w-full bg-gray-100 py-4">
         <div className="mx-auto flex max-w-7xl items-center justify-between px-4 py-2 sm:px-6 lg:px-8">
-          <Link href="/contact-book/index">
+          <Link href="/index">
             <div className="inline-flex items-center space-x-2">
               <span className="font-bold">Contact Book</span>
             </div>
@@ -45,13 +45,13 @@ export default function Navbar() {
           </div>
           <div className="hidden lg:block">
             <Link
-              href="/contact-book/login"
+              href="/login"
               className="rounded-md bg-gray-200 mx-2 px-3 py-2 text-sm font-semibold text-dark shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Log In
             </Link>
             <Link
-              href="/contact-book/sign-up"
+              href="/sign-up"
               className="rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Get Stated Today

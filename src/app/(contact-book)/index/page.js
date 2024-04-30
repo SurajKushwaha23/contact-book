@@ -1,4 +1,9 @@
+"use client";
+import { toast } from "react-hot-toast";
 export default function Index() {
+  const handleButtonClick = () => {
+    toast.success("You did it! Suraj Kushwaha"); // Displays a success message
+  };
   return (
     <>
       <section className="py-24 bg-gray-100">
@@ -19,6 +24,7 @@ export default function Index() {
             <button
               type="button"
               className="mt-8 rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              onClick={handleButtonClick}
             >
               Get start today
             </button>

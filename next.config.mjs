@@ -5,7 +5,7 @@ const nextConfig = {
       // Basic redirect
       {
         source: "/",
-        destination: "/contact-book/index",
+        destination: "/index",
         permanent: true,
       },
     ];
