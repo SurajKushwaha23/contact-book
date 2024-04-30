@@ -58,19 +58,20 @@ export default function Navbar() {
                       </button>
                     </div>
                   </div>
-
-                  <button
-                    type="button"
-                    className="mt-4 w-full rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose"
-                  >
-                    Log In
-                  </button>
-                  <button
-                    type="button"
-                    className="mt-4 w-full rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose"
-                  >
-                    Get Stated Today
-                  </button>
+                  <div>
+                    <Link
+                      href="/login"
+                      className="mt-4 text-center block mx-auto rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose"
+                    >
+                      Log In
+                    </Link>
+                    <Link
+                      href="/sign-up"
+                      className="mt-4 text-center block mx-auto rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose"
+                    >
+                      Get Stated Today
+                    </Link>
+                  </div>
                 </div>
               </div>
             </div>

@@ -7,7 +7,7 @@ export default function Footer() {
         <div className="container relative z-10 mx-auto px-4">
           <div className="-m-8 flex flex-wrap items-center justify-between">
             <div className="w-auto p-8">
-              <Link href="#">
+              <Link href="/">
                 <div className="inline-flex items-center">
                   <span className="ml-4 text-white text-lg font-bold">
                     Contact Book
