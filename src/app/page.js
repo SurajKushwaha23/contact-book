@@ -7,7 +7,7 @@ export default function Index() {
           <div className="mx-auto max-w-4xl  text-center">
             <h2 className="mt-8 text-3xl font-bold leading-tight text-black sm:text-4xl lg:mt-12 lg:text-5xl">
               Save your{" "}
-              <span className="border-b-8 border-yellow-300">Contact</span>{" "}
+              <span className="border-b-8 border-rose-700">Contact</span>{" "}
               without loosing it.
             </h2>
             <p className="mx-auto mt-6 max-w-4xl text-md text-gray-600 md:mt-10 lg:text-xl">
@@ -19,7 +19,7 @@ export default function Index() {
 
             <button
               type="button"
-              className="mt-8 rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              className="mt-8 rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Get start today
             </button>

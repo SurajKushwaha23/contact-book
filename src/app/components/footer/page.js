@@ -1,3 +1,5 @@
+import Link from "next/link";
+
 export default function Footer() {
   return (
     <>
@@ -5,44 +7,29 @@ export default function Footer() {
         <div className="container relative z-10 mx-auto px-4">
           <div className="-m-8 flex flex-wrap items-center justify-between">
             <div className="w-auto p-8">
-              <a href="#">
+              <Link href="#">
                 <div className="inline-flex items-center">
                   <span className="ml-4 text-white text-lg font-bold">
                     Contact Book
                   </span>
                 </div>
-              </a>
+              </Link>
             </div>
             <div className="w-auto p-8">
               <ul className="-m-5 flex flex-wrap items-center">
                 <li className="p-5">
-                  <a
+                  <Link
                     className="font-medium text-white hover:text-gray-200"
-                    href="#"
+                    href="/privacy-policy"
                   >
                     Privacy Policy
-                  </a>
+                  </Link>
                 </li>
+
                 <li className="p-5">
                   <a
                     className="font-medium text-white hover:text-gray-200"
-                    href="#"
-                  >
-                    Terms of Service
-                  </a>
-                </li>
-                <li className="p-5">
-                  <a
-                    className="font-medium text-white hover:text-gray-200"
-                    href="#"
-                  >
-                    Return Policy
-                  </a>
-                </li>
-                <li className="p-5">
-                  <a
-                    className="font-medium text-white hover:text-gray-200"
-                    href="#"
+                    href="contact-us"
                   >
                     Contact Us
                   </a>

@@ -7,7 +7,7 @@ export default function SignUp() {
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
         <div className="lg:max-w-md w-full shadow-lg p-10">
-          <div className="mb-2 flex justify-center text-lg font-bold">
+          <div className="mb-2 flex justify-center text-rose-800 text-2xl font-bold">
             Contact Book
           </div>
           <h2 className="text-center text-2xl font-bold leading-tight text-black">
@@ -18,7 +18,7 @@ export default function SignUp() {
             <Link
               href="/login"
               title=""
-              className="font-medium text-black transition-all duration-200 hover:underline"
+              className="font-medium text-rose-800 transition-all duration-200 hover:underline"
             >
               Sign In
             </Link>
@@ -81,7 +81,7 @@ export default function SignUp() {
               <div>
                 <button
                   type="button"
-                  className="inline-flex w-full items-center justify-center rounded-md bg-black px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-black/80"
+                  className="inline-flex w-full items-center justify-center rounded-md bg-rose-800 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-rose/80"
                 >
                   Create Account <ArrowRight className="ml-2" size={16} />
                 </button>
