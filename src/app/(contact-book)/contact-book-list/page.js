@@ -35,7 +35,7 @@ export default function ContactBookList() {
           </div>
           <div>
             <Link
-              href="/contact-book/add-contact-data"
+              href="/add-contact-data"
               className="rounded-md bg-gray-700 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-black/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Add new employee
