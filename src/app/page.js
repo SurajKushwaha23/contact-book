@@ -11,7 +11,7 @@ export default function Index() {
               <span className="border-b-8 border-rose-700">Contact</span>{" "}
               without loosing it.
             </h2>
-            <p className="mx-auto pb-6 max-w-4xl text-lg text-gray-600 md:mt-10 lg:text-xl">
+            <p className="mx-auto pb-6 max-w-4xl text-lg text-gray-600 md:mt-10 lg:text-xl text-justify">
               Contact Book is a tool used to store and organize information
               about people and organizations that an individual or a business
               may need to contact. It typically includes names, phone numbers,
