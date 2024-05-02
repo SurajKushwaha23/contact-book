@@ -1,4 +1,5 @@
 import { toast } from "react-hot-toast";
+import Link from "next/link";
 export default function Index() {
   return (
     <>
@@ -10,19 +11,19 @@ export default function Index() {
               <span className="border-b-8 border-rose-700">Contact</span>{" "}
               without loosing it.
             </h2>
-            <p className="mx-auto mt-6 max-w-4xl text-md text-gray-600 md:mt-10 lg:text-xl">
+            <p className="mx-auto pb-6 max-w-4xl text-md text-gray-600 md:mt-10 lg:text-xl">
               Contact Book is a tool used to store and organize information
               about people and organizations that an individual or a business
               may need to contact. It typically includes names, phone numbers,
               email addresses, physical addresses, and other relevant details.
             </p>
 
-            <button
-              type="button"
+            <Link
+              href="/sign-up"
               className="mt-8 rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
             >
               Get start today
-            </button>
+            </Link>
           </div>
         </div>
       </section>
