@@ -19,10 +19,15 @@ export default function Login() {
         "/api/v1/contact-book/user/login",
         user
       );
-      toast.success("login successfully");
-      router.push("/contact-book-list");
+      if (response.data.error) {
+        toast.error(response.data.error);
+        router.push("/login");
+      } else {
+        toast.success(response.data.message);
+        router.push("/contact-book-list");
+      }
     } catch (error) {
-      console.log("Login failed", error.message);
+      console.log("Login failed", error);
       toast.error("Login failed", error);
     }
   };

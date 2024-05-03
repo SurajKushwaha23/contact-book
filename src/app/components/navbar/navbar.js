@@ -1,5 +1,5 @@
 "use client";
-import React from "react";
+import React, { useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
@@ -9,6 +9,7 @@ import { useRouter } from "next/navigation";
 export default function Navbar() {
   const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
+  const [userdata, setUserData] = React.useState("null");
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
@@ -22,9 +23,18 @@ export default function Navbar() {
         router.push("/login");
       }
     } catch (error) {
-      console.log(error);
       toast.error(error);
     }
+  };
+
+  useEffect(() => {
+    getUserDetails();
+  }, []);
+
+  const getUserDetails = async () => {
+    const res = await axios.get("/api/v1/contact-book/user/user-profile");
+    console.log(res);
+    setUserData(res);
   };
 
   return (
@@ -39,19 +49,45 @@ export default function Navbar() {
             </div>
           </Link>
           <div className="hidden lg:block">
-            <Link
-              href="/login"
-              className="rounded-md bg-gray-200 mx-2 px-3 py-2 text-sm font-semibold text-dark shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-            >
-              Log In
-            </Link>
-            <button
-              type="button"
-              className="rounded-sm bg-rose-800 px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-              onClick={logout}
-            >
-              Logout
-            </button>
+            {userdata == "null" ? (
+              <>
+                <Link
+                  href="/login"
+                  className="rounded-md bg-gray-200 mx-2 px-3 py-2 text-sm font-semibold text-dark shadow-sm hover:bg-gray-200 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                >
+                  Log In
+                </Link>
+                <Link
+                  href="/sign-up"
+                  className="rounded-md bg-rose-800 mx-2 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose-800 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-rose"
+                >
+                  Get Started Today
+                </Link>
+              </>
+            ) : (
+              <>
+                <div className="flex items-center space-x-2">
+                  <div className="bg-rose-800 flex justify-center items-center text-white h-10 w-10 rounded-full text-2xl font-bold">
+                    {userdata.data.fullname.charAt(0)}
+                  </div>
+                  <span className="flex flex-col">
+                    <span className="text-sm font-medium text-gray-900">
+                      {userdata.data.fullname}
+                    </span>
+                    <span className="text-sm font-medium text-gray-500">
+                      {userdata.data.email}
+                    </span>
+                  </span>
+                  <button
+                    type="button"
+                    className="rounded-md bg-rose-800 px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              </>
+            )}
           </div>
           <div className="lg:hidden">
             <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />

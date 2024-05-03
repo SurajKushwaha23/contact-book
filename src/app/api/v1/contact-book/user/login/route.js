@@ -12,10 +12,10 @@ export async function POST(request) {
     //check if user exists
     const user = await User.findOne({ email });
     if (!user) {
-      return NextResponse.json(
-        { error: "User does not exist" },
-        { status: 400 }
-      );
+      return NextResponse.json({
+        error: "User does not exist",
+        success: false,
+      });
     }
     //check if password is correct
     const validPassword = await bcrypt.compare(password, user.password);
@@ -47,6 +47,7 @@ export async function POST(request) {
     // Set the token as an HTTP-only cookie
     response.cookies.set("token", token, {
       httpOnly: true,
+      secure: true,
     });
 
     return response;
