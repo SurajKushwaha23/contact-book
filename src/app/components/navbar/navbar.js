@@ -29,12 +29,16 @@ export default function Navbar() {
 
   useEffect(() => {
     getUserDetails();
-  }, []);
+  }, [userdata]);
 
   const getUserDetails = async () => {
-    const res = await axios.get("/api/v1/contact-book/user/user-profile");
-    console.log(res);
-    setUserData(res);
+    try {
+      const res = await axios.get("/api/v1/contact-book/user/user-profile");
+      console.log(res);
+      setUserData(res);
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   return (
