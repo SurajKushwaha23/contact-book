@@ -3,14 +3,14 @@ import connect from "@/dbConfig/dbConfig";
 import User from "@/models/user";
 import bcrypt from "bcryptjs";
 
-connect();
+await connect();
 
 export async function POST(request) {
   // Defines an asynchronous POST request handler.
   try {
     const reqBody = await request.json();
-    const { username, email, password } = reqBody;
-    // Parses the request body to extract username, email, and password.
+    const { fullname, email, password } = reqBody;
+    // Parses the request body to extract fullname, email, and password.
 
     //Checks if a user with the provided email already exists.
     const user = await User.findOne({ email });
@@ -28,7 +28,7 @@ export async function POST(request) {
     const cryptPassword = await bcrypt.hash(password, salt);
 
     const createdUser = new User({
-      username,
+      fullname,
       email,
       password: cryptPassword,
     });

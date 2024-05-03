@@ -1,8 +1,32 @@
-import React from "react";
+"use client";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import React, { useEffect } from "react";
+import { useRouter } from "next/navigation";
+import axios from "axios";
+import toast from "react-hot-toast";
 
 export default function Login() {
+  const router = useRouter();
+  const [user, setUser] = React.useState({
+    email: "",
+    password: "",
+  });
+
+  const onLogin = async () => {
+    try {
+      const response = await axios.post(
+        "/api/v1/contact-book/user/login",
+        user
+      );
+      toast.success("login successfully");
+      router.push("/contact-book-list");
+    } catch (error) {
+      console.log("Login failed", error.message);
+      toast.error("Login failed", error);
+    }
+  };
+
   return (
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -23,7 +47,7 @@ export default function Login() {
               Create a free account
             </Link>
           </p>
-          <form action="#" method="POST" className="mt-8">
+          <form className="mt-8">
             <div className="space-y-5">
               <div>
                 <label
@@ -37,6 +61,10 @@ export default function Login() {
                   <input
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="email"
+                    value={user.email}
+                    onChange={(e) =>
+                      setUser({ ...user, email: e.target.value })
+                    }
                     placeholder="Email"
                   ></input>
                 </div>
@@ -63,6 +91,10 @@ export default function Login() {
                   <input
                     className="flex h-10 w-full rounded-md border border-gray-300 bg-transparent px-3 py-2 text-sm placeholder:text-gray-400 focus:outline-none focus:ring-1 focus:ring-gray-400 focus:ring-offset-1 disabled:cursor-not-allowed disabled:opacity-50"
                     type="password"
+                    value={user.password}
+                    onChange={(e) =>
+                      setUser({ ...user, password: e.target.value })
+                    }
                     placeholder="Password"
                   ></input>
                 </div>
@@ -71,6 +103,7 @@ export default function Login() {
                 <button
                   type="button"
                   className="inline-flex w-full items-center justify-center rounded-md bg-rose-800 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-rose/80"
+                  onClick={onLogin}
                 >
                   Get started <ArrowRight className="ml-2" size={16} />
                 </button>

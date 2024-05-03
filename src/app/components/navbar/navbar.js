@@ -2,13 +2,31 @@
 import React from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
+import toast from "react-hot-toast";
+import axios from "axios";
+import { useRouter } from "next/navigation";
 
 export default function Navbar() {
+  const router = useRouter();
   const [isMenuOpen, setIsMenuOpen] = React.useState(false);
 
   const toggleMenu = () => {
     setIsMenuOpen(!isMenuOpen);
   };
+
+  const logout = async () => {
+    try {
+      const response = await axios.get("/api/v1/contact-book/user/logout");
+      if (response.data.success) {
+        toast.success(response.data.message);
+        router.push("/login");
+      }
+    } catch (error) {
+      console.log(error);
+      toast.error(error);
+    }
+  };
+
   return (
     <>
       <div className="relative w-full bg-gray-200">
@@ -27,12 +45,13 @@ export default function Navbar() {
             >
               Log In
             </Link>
-            <Link
-              href="/sign-up"
-              className="rounded-md bg-rose-800 px-3 py-2 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+            <button
+              type="button"
+              className="rounded-sm bg-rose-800 px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+              onClick={logout}
             >
-              Get Stated Today
-            </Link>
+              Logout
+            </button>
           </div>
           <div className="lg:hidden">
             <Menu onClick={toggleMenu} className="h-6 w-6 cursor-pointer" />

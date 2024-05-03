@@ -1,8 +1,33 @@
+"use client";
 import React from "react";
 import { ArrowRight } from "lucide-react";
 import Link from "next/link";
+import axios from "axios";
+import { toast } from "react-hot-toast";
+import { useRouter } from "next/navigation";
 
 export default function SignUp() {
+  const router = useRouter();
+  const [user, setUser] = React.useState({
+    fullname: "",
+    password: "",
+    username: "",
+  });
+
+  const onSignup = async () => {
+    try {
+      const response = await axios.post(
+        "/api/v1/contact-book/user/register",
+        user
+      );
+      console.log("Response data", response);
+      router.push("/login");
+      toast.success("You have successfully register.");
+    } catch (error) {
+      toast.error("Signup failed", error);
+    }
+  };
+
   return (
     <section>
       <div className="flex items-center justify-center px-4 py-10 sm:px-6 sm:py-16 lg:px-8 lg:py-24">
@@ -39,6 +64,10 @@ export default function SignUp() {
                     type="text"
                     placeholder="Full Name"
                     id="name"
+                    value={user.fullname}
+                    onChange={(e) =>
+                      setUser({ ...user, fullname: e.target.value })
+                    }
                   ></input>
                 </div>
               </div>
@@ -56,6 +85,10 @@ export default function SignUp() {
                     type="email"
                     placeholder="Email"
                     id="email"
+                    value={user.email}
+                    onChange={(e) =>
+                      setUser({ ...user, email: e.target.value })
+                    }
                   ></input>
                 </div>
               </div>
@@ -75,6 +108,10 @@ export default function SignUp() {
                     type="password"
                     placeholder="Password"
                     id="password"
+                    value={user.password}
+                    onChange={(e) =>
+                      setUser({ ...user, password: e.target.value })
+                    }
                   ></input>
                 </div>
               </div>
@@ -82,6 +119,7 @@ export default function SignUp() {
                 <button
                   type="button"
                   className="inline-flex w-full items-center justify-center rounded-md bg-rose-800 px-3.5 py-2.5 font-semibold leading-7 text-white hover:bg-rose/80"
+                  onClick={onSignup}
                 >
                   Create Account <ArrowRight className="ml-2" size={16} />
                 </button>
