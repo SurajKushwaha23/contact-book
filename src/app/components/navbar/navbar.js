@@ -1,10 +1,11 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useContext, useEffect } from "react";
 import { Menu, X } from "lucide-react";
 import Link from "next/link";
 import toast from "react-hot-toast";
 import axios from "axios";
 import { useRouter } from "next/navigation";
+import { UserProfileContext } from "@/context/userContext";
 
 export default function Navbar() {
   const router = useRouter();
@@ -27,19 +28,9 @@ export default function Navbar() {
     }
   };
 
-  useEffect(() => {
-    getUserDetails();
-  }, [userdata]);
+  const { user } = useContext(UserProfileContext);
 
-  const getUserDetails = async () => {
-    try {
-      const res = await axios.get("/api/v1/contact-book/user/user-profile");
-      console.log(res);
-      setUserData(res);
-    } catch (error) {
-      console.log(error);
-    }
-  };
+  console.log("Current User ", user);
 
   return (
     <>
@@ -53,7 +44,30 @@ export default function Navbar() {
             </div>
           </Link>
           <div className="hidden lg:block">
-            {userdata == "null" ? (
+            {user._id ? (
+              <>
+                <div className="flex items-center space-x-2">
+                  <div className="bg-rose-800 flex justify-center items-center text-white h-10 w-10 rounded-full text-2xl font-bold">
+                    S
+                  </div>
+                  <span className="flex flex-col">
+                    <span className="text-sm font-medium text-gray-900">
+                      Suraj Kushwaha
+                    </span>
+                    <span className="text-sm font-medium text-gray-500">
+                      suraj@gmail.com
+                    </span>
+                  </span>
+                  <button
+                    type="button"
+                    className="rounded-md bg-rose-800 px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
+                    onClick={logout}
+                  >
+                    Logout
+                  </button>
+                </div>
+              </>
+            ) : (
               <>
                 <Link
                   href="/login"
@@ -67,29 +81,6 @@ export default function Navbar() {
                 >
                   Get Started Today
                 </Link>
-              </>
-            ) : (
-              <>
-                <div className="flex items-center space-x-2">
-                  <div className="bg-rose-800 flex justify-center items-center text-white h-10 w-10 rounded-full text-2xl font-bold">
-                    {userdata.data.fullname.charAt(0)}
-                  </div>
-                  <span className="flex flex-col">
-                    <span className="text-sm font-medium text-gray-900">
-                      {userdata.data.fullname}
-                    </span>
-                    <span className="text-sm font-medium text-gray-500">
-                      {userdata.data.email}
-                    </span>
-                  </span>
-                  <button
-                    type="button"
-                    className="rounded-md bg-rose-800 px-3 py-1 text-sm font-semibold text-white shadow-sm hover:bg-rose/80 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-black"
-                    onClick={logout}
-                  >
-                    Logout
-                  </button>
-                </div>
               </>
             )}
           </div>

@@ -3,6 +3,7 @@ import "./globals.css";
 import Navbar from "./components/navbar/navbar";
 import Footer from "./components/footer/page";
 import { Toaster } from "react-hot-toast";
+import { ContextProvider } from "@/context/userContext";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -15,10 +16,14 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body className={inter.className}>
-        <Navbar />
-        <Toaster position="top-right" />
-        {children}
-        <Footer />
+        <ContextProvider>
+          <>
+            <Navbar />
+            <Toaster position="top-right" />
+            {children}
+            <Footer />
+          </>
+        </ContextProvider>
       </body>
     </html>
   );

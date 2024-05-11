@@ -9,6 +9,12 @@ export async function POST(request) {
   try {
     const reqBody = await request.json();
     const { email, password } = reqBody;
+
+    if (!email || !password) {
+      return NextResponse.json({
+        error: "All fields are mandatory",
+      });
+    }
     //check if user exists
     const user = await User.findOne({ email });
     if (!user) {
